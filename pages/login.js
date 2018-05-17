@@ -1,4 +1,4 @@
-import {Component} from 'react'
+import {Component,Fragment } from 'react'
 import LoginForm from '../components/login-form'
 
 class Login extends Component {
@@ -7,7 +7,11 @@ class Login extends Component {
     }
     render() {
         return (
-            <LoginForm />
+            <Fragment>
+                <div className="login-section">
+                    <LoginForm />
+                </div>
+            </Fragment>
         )
     }
 }
