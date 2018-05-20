@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
         <Head>
           <style>{`body { margin: 0 } /* custom! */`}</style>
           <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/antd/3.2.0/antd.min.css' />
+          <link rel="stylesheet" href="/_next/static/style.css" />
         </Head>
         <body className="custom_class">
           <Main />

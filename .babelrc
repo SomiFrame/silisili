@@ -2,21 +2,22 @@
     "plugins": [
         [
             "transform-define",
-            {
-                "process": {
-                    "env": {
-                        "RES_API": "http://10.72.2.33:8080/api/v2"
-                    }
+        {
+            "process": {
+                "env": {
+                    "RES_API": "http://10.72.2.33:8080/api/v2"
                 }
             }
+        }
         ],
         [
             "import",
-            {
-                "libraryName": "antd",
-                "style": false
-            }
-        ]
+        {
+            "libraryName": "antd",
+            "style": false
+        }
+        ],
+        ["styled-jsx/babel", { "optimizeForSpeed": true }]
     ],
     "presets": [
         "next/babel"

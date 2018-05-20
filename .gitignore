@@ -2,3 +2,4 @@
 /.vscode
 /env.js
 /.next
+/package-lock.json
