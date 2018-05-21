@@ -1,5 +1,6 @@
 import { Component, Fragment } from 'react'
 import LoginForm from '../components/login-form'
+import RegisterForm from '../components/register-form'
 import { Tabs, Row, Col } from 'antd'
 import './login.scss'
 const TabPane = Tabs.TabPane
@@ -33,7 +34,7 @@ class Login extends Component {
                                             </div>
                                         </TabPane>
                                         <TabPane tab="sign up" key="2">
-                                            sign up
+                                            <RegisterForm />
                                         </TabPane>
                                     </Tabs>
                                 </Col>
