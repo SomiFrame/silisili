@@ -1,0 +1,11 @@
+.page-layout-root {
+    background: transparent;
+    .index-page-background {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+}
