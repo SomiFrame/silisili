@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import withRedux from "next-redux-wrapper"
 import Layout from "../components/layout"
+import Carousel from "../components/carousel"
 import './index.scss'
 class Page extends Component {
     static getInitialProps({ store, isServer, pathname, query }) {
@@ -16,10 +17,13 @@ class Page extends Component {
             <Layout>
                 <img className="index-page-background" src="/static/imgs/page-background-luo.jpg" />
                 <div className="page-container">
+                    <div style={{ width: 900, height: 500, margin: '50px auto' }}>
+                        <Carousel />
+                    </div>
                     {/* <div>Prop from Redux {this.props.foo}</div>
                     <div>Prop from getInitialProps {this.props.custom}</div>
                     <button onClick={this.onClick.bind(this)}>update redux</button> */}
-                    
+
                 </div>
             </Layout>
         )
