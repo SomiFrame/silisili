@@ -3,7 +3,7 @@ import React from 'react'
 import { Provider } from "react-redux";
 import App, { Container } from "next/app";
 import withRedux from "next-redux-wrapper";
-import makeStore from "../makeStore.js";
+import makeStore from "../redux/makeStore";
 class MyApp extends App {
     static async getInitialProps({ Component, ctx }) {
         return {
@@ -22,7 +22,7 @@ class MyApp extends App {
                     <Component {...pageProps} />
                 </Provider>
             </Container>
-        );
+        )
     }
 
 }
