@@ -1,4 +1,3 @@
-import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import Mock from 'mockjs';
 import {
@@ -8,8 +7,18 @@ export default {
   /**
    * mock start
    */
-  start() { // 初始化函数
+  start(axios) { // 初始化函数
     let mock = new MockAdapter(axios); // 创建 MockAdapter 实例
+    // 获取 普通字符串
+    mock.onGet('/randomString').reply(config=>{
+      return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+          resolve([200,{
+            randomString: Mock.Random.guid()
+          }])
+        },2000)
+      })
+    })
     // 获取todo列表
     mock.onGet('/todo/list').reply(config => { //  config 指 前台传过来的值
       let mockTodo = Todos.map(tode => { // 重组 Todos数组，变成我们想要的数据

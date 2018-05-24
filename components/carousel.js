@@ -4,7 +4,6 @@ import Slider from "react-slick"
 import "./carousel.scss"
 class CustomCarousel extends Component {
     componentDidMount() {
-        console.log(this)
     }
     render() {
         const setting = {
