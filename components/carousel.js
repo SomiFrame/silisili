@@ -3,6 +3,10 @@ import { Carousel, Button, Icon } from 'antd'
 import Slider from "react-slick"
 import "./carousel.scss"
 class CustomCarousel extends Component {
+    constructor(props) {
+        super(props)
+        console.log('carousel', this.props)
+    }
     componentDidMount() {
     }
     render() {
@@ -17,10 +21,15 @@ class CustomCarousel extends Component {
         return (
             <div>
                 <Slider {...setting} autoplay>
-                    <div><h3>1</h3></div>
-                    <div><h3>2</h3></div>
-                    <div><h3>3</h3></div>
-                    <div><h3>4</h3></div>
+                    {
+                        this.props.dataList &&
+                        this.props.dataList.map((val, index) =>
+                            <div key={index}>
+                                <img style={{height:"100%",width:"100%"}} src={val.img_href}/> 
+                                <h3>{val.name}</h3>
+                            </div>
+                        )
+                    }
                 </Slider>
             </div>
         )

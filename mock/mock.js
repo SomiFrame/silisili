@@ -1,5 +1,5 @@
 import MockAdapter from 'axios-mock-adapter';
-import Mock from 'mockjs';
+import Mock, { Random } from 'mockjs';
 import {
   Todos
 } from './data/todoList'; // 导入Todos数据
@@ -8,22 +8,38 @@ export default {
    * mock start
    */
   start(axios) { // 初始化函数
-    let mock = new MockAdapter(axios); // 创建 MockAdapter 实例
+    let mock = new MockAdapter(axios, { delayResponse: 2000 }); // 创建 MockAdapter 实例
+    // 获取 推荐列表
+    mock.onGet('/recommend').reply(config => {
+      return new Promise((resolve, reject) => {
+        resolve([200, {
+          data: Mock.mock({
+            "array|1-10": [
+              {
+                "name": () => Random.last(),
+                "img_href": () => Random.dataImage('200x100',Random.cname()),
+                "url": () => Random.url()
+              }
+            ]
+          }).array,
+          error: {
+          }
+        }])
+      })
+    })
     // 获取 普通字符串
-    mock.onGet('/randomString').reply(config=>{
-      return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-          resolve([200,{
-            randomString: Mock.Random.guid()
-          }])
-        },2000)
+    mock.onGet('/randomString').reply(config => {
+      return new Promise((resolve, reject) => {
+        resolve([200, {
+          randomString: Mock.Random.guid()
+        }])
       })
     })
     // 获取todo列表
     mock.onGet('/todo/list').reply(config => { //  config 指 前台传过来的值
       let mockTodo = Todos.map(tode => { // 重组 Todos数组，变成我们想要的数据
         return {
-          id: tode.id, 
+          id: tode.id,
           title: tode.title,
           count: tode.record.filter((data) => {
             if (data.checked === false) return true;
@@ -37,14 +53,12 @@ export default {
         return true;
       });
       return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve([200, {
-            todos: mockTodo // 返回状态为200，并且返回todos数据
-          }]);
-        }, 200);
+        resolve([200, {
+          todos: mockTodo // 返回状态为200，并且返回todos数据
+        }]);
       });
     });
-        // 新增一条todo
+    // 新增一条todo
     mock.onPost('/todo/addTodo').reply(config => {
       Todos.push({
         id: Mock.Random.guid(),
@@ -54,9 +68,7 @@ export default {
         record: []
       });
       return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve([200]);
-        }, 200);
+        resolve([200]);
       });
     });
   }
