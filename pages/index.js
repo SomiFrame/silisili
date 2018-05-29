@@ -1,29 +1,45 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import actions from "../redux/action"
+import fetchApi from "../redux/fetchApis"
 import Layout from "../components/layout"
 import Carousel from "../components/carousel"
 import dynamic from "next/dynamic"
 import "aos/src/sass/aos.scss"
 import "./index.scss"
+import { updateFoo } from "../redux/action/actions";
 let aos
 if (typeof window !== "undefined") { aos = require("aos") }
 class Page extends Component {
-    static getInitialProps({ req, store, isServer, pathname, query }) {
-        const { recommendDataGet } = actions
-        store.dispatch(recommendDataGet())
-        return {
-            isBrowser: !!!req
+    static async getInitialProps({ req, store, isServer, pathname, query }) {
+        const { recommendDataGet, updateFoo } = actions
+        if (!req) {
+            return {
+                isBrowser: !!!req
+            }
+        } else {
+            await store.dispatch(recommendDataGet())
+            store.dispatch(updateFoo())
+            return {
+                isBrowser: !!!req
+            }
         }
     }
+    constructor(props) {
+        super(props)
+        this.state = {
+            ...this.props
+        }
+        console.log('constructor', this.state)
+    }
     componentDidMount() {
-        console.log(this.props)
+        console.log('component did mount', this.props)
+        aos.init({
+            duration: 1000,
+            easing: 'eas-in-sine',
+            delay: 100
+        })
         if (this.props.isBrowser) {
-            aos.init({
-                duration: 1000,
-                easing: 'eas-in-sine',
-                delay: 100
-            })
             const { recommendDataGet } = actions
             this.props.dispatch(recommendDataGet())
         }

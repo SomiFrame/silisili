@@ -17,7 +17,7 @@ export default {
             "array|1-10": [
               {
                 "name": () => Random.last(),
-                "img_href": () => Random.dataImage('200x100',Random.cname()),
+                "img_href": () => Random.image('200x100',Random.color(),Random.cname()),
                 "url": () => Random.url()
               }
             ]

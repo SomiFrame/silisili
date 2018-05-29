@@ -5,7 +5,6 @@ import "./carousel.scss"
 class CustomCarousel extends Component {
     constructor(props) {
         super(props)
-        console.log('carousel', this.props)
     }
     componentDidMount() {
     }
@@ -19,19 +18,17 @@ class CustomCarousel extends Component {
             className: "custom-slider"
         }
         return (
-            <div>
-                <Slider {...setting} autoplay>
-                    {
-                        this.props.dataList &&
-                        this.props.dataList.map((val, index) =>
-                            <div key={index}>
-                                <img style={{height:"100%",width:"100%"}} src={val.img_href}/> 
-                                <h3>{val.name}</h3>
-                            </div>
-                        )
-                    }
-                </Slider>
-            </div>
+            <Slider {...setting} autoplay>
+                {
+                    this.props.dataList &&
+                    this.props.dataList.map((val, index) =>
+                        <div key={index}>
+                            <img style={{ height: "100%", width: "100%" }} src={val.img_href} />
+                            <h3>{val.name}</h3>
+                        </div>
+                    )
+                }
+            </Slider>
         )
     }
 }
