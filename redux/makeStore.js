@@ -1,9 +1,9 @@
 import React, { Component } from "react"
-import { createStore,applyMiddleware } from "redux"
+import { createStore, applyMiddleware } from "redux"
 import promiseMiddleware from "redux-promise"
 import * as actions from "./action"
 import reducers from './reducer/reducers';
-const initialState = {
+const exampleInitialState = {
     foo: 'all',
     too: 'asoidfu'
 }
@@ -17,7 +17,7 @@ const reducer = (state = initialState, action) => {
     }
 };
 // create a store creator
-const makeStore = (initialState) => {
-    return createStore(reducers, applyMiddleware(promiseMiddleware))
+const makeStore = (initialState = exampleInitialState) => {
+    return createStore(reducers, initialState, applyMiddleware(promiseMiddleware))
 }
 export default makeStore

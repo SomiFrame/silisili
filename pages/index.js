@@ -19,7 +19,6 @@ class Page extends Component {
             }
         } else {
             await store.dispatch(recommendDataGet())
-            store.dispatch(updateFoo())
             return {
                 isBrowser: !!!req
             }
@@ -30,10 +29,8 @@ class Page extends Component {
         this.state = {
             ...this.props
         }
-        console.log('constructor', this.state)
     }
     componentDidMount() {
-        console.log('component did mount', this.props)
         aos.init({
             duration: 1000,
             easing: 'eas-in-sine',
@@ -48,33 +45,21 @@ class Page extends Component {
         return (
             <Layout>
                 <img className="index-page-background" src="/static/imgs/page-background-luo.jpg" />
-                <div className="page-container">
-                    <section id="section-1" data-aos="fade-zoom-in">
-                        <div style={{ width: 900, height: 500, margin: '100px auto' }}>
-                            <Carousel dataList={this.props.recommends} />
-                        </div>
-                    </section>
-                    <section id="section-2" data-aos="zoom-in-up">
-                        <div style={{ width: 900, height: 500, margin: '100px auto' }}>
-                            <Carousel dataList={this.props.recommends} />
-                        </div>
-                    </section>
-                    <section id="section-3" data-aos="flip-up">
-                        <div style={{ width: 900, height: 500, margin: '100px auto' }}>
-                            <Carousel dataList={this.props.recommends} />
-                        </div>
-                    </section>
-                </div>
+                <section id="section-1">
+                    <div style={{ width: 900, height: 500, margin: '100px auto' }}>
+                        <Carousel dataList={this.props.recommends} />
+                    </div>
+                </section>
             </Layout>
         )
+
     }
 }
 
 //export default connect()(Page);
 function mapStateToProps(state) {
-    console.log('all state', state)
     const { foo, recommends } = state
     return { foo, recommends }
 }
 
-export default connect(mapStateToProps)(Page);
+export default connect(mapStateToProps)(Page)

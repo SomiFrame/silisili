@@ -9,8 +9,8 @@ class layout extends Component {
     render() {
         return (
             <Layout className="page-layout-root" style={{ minHeight: '100vh' }}>
-                <div className="page-root">
-                    <CustomHeader />
+                <CustomHeader />
+                <div className="content">
                     {this.props.children}
                 </div>
             </Layout>

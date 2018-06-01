@@ -9,7 +9,7 @@ class header extends Component {
     }
     render() {
         return (
-            <Row style={{lineHeight:'75px',height:75}}>
+            <Row style={{ lineHeight: '75px', height: 75 }}>
                 <Col span={6}>
                     <div className="page-title">
                         <h1>SiliSili</h1>
