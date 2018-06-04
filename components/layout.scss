@@ -1,7 +1,35 @@
-.page-slider {
+body {
+    background-color: #f2f2f2;
+}
+
+.page-layout-root {
+    width: 100%;
+    min-height: 100vh;
     background: transparent;
-    .header-container {
+    .page-container {
+        max-width: 1200px;
         height: auto;
-        background: transparent;
+        margin: 0 auto;
     }
+}
+
+.parallax-group {
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.parallax-layer_back {
+   transform: translateZ(-1px) scale(2);
+}
+
+.parallax-layer_base {
+    transform: translateZ(0);
 }
