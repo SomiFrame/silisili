@@ -22,7 +22,7 @@ class CustomCarousel extends Component {
                 {
                     this.props.dataList &&
                     this.props.dataList.map((val, index) =>
-                        <div key={index}>
+                        <div className="silder-item-container" key={index}>
                             <img style={{ height: "100%", width: "100%" }} src={val.img_href} />
                             <h3>{val.name}</h3>
                         </div>
