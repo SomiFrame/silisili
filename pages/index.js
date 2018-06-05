@@ -79,10 +79,9 @@ class Page extends Component {
                         </Card>
                     </section>
                     <section className="parallax-group index-parallax">
-                        <div className="parallax-layer parallax-layer_back">
+                        <div className="parallax-layer parallax-layer_back Gintama">
                         </div>
                         <div className="parallax-layer parallax-layer_base">
-                                <h1>asdlfuqoiwer</h1>
                         </div>
                     </section>
                     <section id="section-dayly-update">
@@ -106,11 +105,36 @@ class Page extends Component {
                             </Row>
                         </Card>
                     </section>
-
+                    <section className="parallax-group index-parallax">
+                        <div className="parallax-layer parallax-layer_back Bakuman">
+                        </div>
+                        <div className="parallax-layer parallax-layer_base">
+                        </div>
+                    </section>
+                    <section id="section-dayly-update">
+                        <Card title={"本周热门"} bordered={false}>
+                            <Row gutter={16}>
+                                {
+                                    [1, 2, 3, 4, 5, 6].map((val, index) =>
+                                        <Col key={index} md={8} sm={12} xs={24} lg={4}>
+                                            <Card
+                                                hoverable
+                                                style={{ width: "100%" }}
+                                                cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />} >
+                                                <Meta
+                                                    title="Europe Street beat"
+                                                    description="www.instagram.com"
+                                                />
+                                            </Card>
+                                        </Col>
+                                    )
+                                }
+                            </Row>
+                        </Card>
+                    </section>
                 </div>
             </Layout>
         )
-
     }
 }
 

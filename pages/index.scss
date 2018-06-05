@@ -1,13 +1,21 @@
-html,
-body {
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+.page-layout-root {
     perspective: 1px;
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
+    transform-origin: preserve-3d;
 }
 
 .content-container {
     overflow-x: hidden;
+    overflow-y: hidden;
+    width: 1200px;
+    margin: auto;
     section {
         position: relative;
         z-index: 1;
@@ -15,12 +23,16 @@ body {
             z-index: -1;
             height: 200px;
             .parallax-layer_back {
-                background-image: url('/static/imgs/Gintama-1.jpg');
                 background-size: 100%;
                 background-position: 0 -100px;
-                height: 200%;
+                height: 300%;
                 
-
+                &.Gintama {
+                    background-image: url('/static/imgs/Gintama-1.jpg');
+                }
+                &.Bakuman {
+                    background-image: url('/static/imgs/Bakuman-1.jpg');
+                }
             }
             img {
                 position: absolute;

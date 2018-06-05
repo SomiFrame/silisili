@@ -9,8 +9,7 @@ module.exports = withSass({
                 options: {
                     name: 'dist/[path][name].[ext]'
                 }
-            }
-            ,
+            } ,
             {
                 test: /\.css$/,
                 use: ['babel-loader', 'raw-loader', 'postcss-loader']
